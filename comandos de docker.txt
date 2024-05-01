@@ -1,0 +1,55 @@
+docker version-------ver la vercion del docker
+docker pull imagen --------descarg la imagen
+docker run hello-worlk ---la descarga y la ejecuta corre imagen de hello 
+docker ps ----- muestra todos locontenedores imagenes
+docker ps -a ----- muestra todos los contenedores arriba descargado  y su estado  en id del contenedor
+docker image ls ---------- muestras el tiempo  y el peso imagenes
+docker star codigo ----------detiene la imagen
+docker rm hello-world----------borra el contenedor con el id del cont
+docker rm id_conte id_conte------borra 2 o mas contenerdores a la vez
+docker image  rm id_contendor---------borra la imagen
+docker tag imagen:nombre de la etiqueta------crear una etiqueta
+docker run -d --name server_web httpd-------descargar apache servidor linux
+docker container prune-------limpia todos contendores que no esten arriba corriendo
+docker image prune ------limpia las imagenes que no esten siendo usadas
+--all al final del prune imagene sirve para selecciona todas las imagenes asociadas
+docker stop id_contenedor----elimina contenedor lo detiene
+docker system prune --all----- borra todo lo que tiene en el docker PELIGRO
+docker run -d -p 8080:80 --name server_web nombre de la etiquta------para redicreccionar el puerto
+docker exec -it id_conten sh -----------conectarse al contenedor
+docker compose down-------baja contendores
+docker run -d --name container_web -p 80:80 sitio_web
+
+crear servidor mysql
+docker run -d --name mysql_container -e MYSQL_ROOT_PASSWORD=asd123 -e MYSQL_DATABASE=wordpress_db -e MYSQL_USER=wordpress_user -e MYSQL_PASSWORD=asdf1234 mysql:latest
+docker run -d --name mysql_container mysql_wordpress_image ---crear contenedor que se ejecute con la imagen ya cread
+
+crear servidor wordpress
+docker run -d --name wordpress_container -p 8081:80 --link mysql_container -e WORDPRESS_DB_HOST=mysql_container -e WORDPRESS_DB_USER=wordpress_user -e WORDPRESS_DB_PASSWORD=asdf1234 -e WORDPRESS_DB_NAME=wordpress_db wordpress:6.5.2-apache
+docker run -d --name wordpress_container -p 8080:80 --link mysql_container wordpress_image------crear contenedor y se ejecute en la imagen seleccionada linkeada a la base de datos
+
+
+docker build -t nombre_img ./ubicion_de_donde_quiere_imag-----crear una imagen configurada con mis parametros, variables de entorno
+docker run -d --name nom_que_tendra_el_cont -p 80:80 nom_imagen-----para la creacion de un cotenedor
+docker compose version------ ver l VERSION DE DOCKER COMPOSE
+docker-compose -f docker-compose.yml up -d -------desplegar el docker compose
+docker logs -f
+docker inspect id_cont------sirve para inspecsionar el contenedor
+docker search nombre_usuario-------se usa para ver las imagenes de un repositorio
+docker tag id_cont nom_ususario/nom_image:v1----crear un tag dentro e un repositorio
+docker push nom_usuario/nom-image:v1-----subida de la iimagen cpn el tag al repositorio
+--------------------------------------------------------------------------------------------------
+esc:q! ----------salir sin guardar cambios
+tecls i--------para editar
+-e ------variable de entorno condicional
+-f----mostrar continuamente en ese momento no en tiempo real
+-d -------quede en segundo plano no importa el orden donde lo coloque
+--link------linquear conectar
+exit-------salir
+. ---- es indicar q es la misma ubicacion en la q esta
+-t ----- significa tag (colocar nombre)
+------------------------------------------------------
+ingresar a my sql en la shell
+
+mysql -u root -p
+para la contraseña no se ve naa pero si se escribe
